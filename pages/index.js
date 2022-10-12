@@ -1,51 +1,62 @@
+import { useState } from 'react'
 import Link from 'next/link'
 import styles from '../styles/Home.module.css'
 import MainNav from '../components/MainNav'
 import Footer from '../components/Footer'
+import { dataSet } from '../components/DataSet'
+import { useRouter } from 'next/router'
 
 export default function Home() {
+  const [value, setValue] = useState(0)
+  const IncrementValue = () => {
+    if (value < 20) {
+      setValue(value + 1)
+    }
+  }
+  const DecrementValue = () => {
+    if (value > 0) {
+      setValue(value - 1)
+    }
+  }
+
+  // const router = useRouter()
+  // const { id } = router.query
+
+  // console.log(id)
+
   return (
     <div className={styles.container}>
       <MainNav />
       <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js, </a> with Shahriar...
-        </h1>
-
-        <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>pages/index.js</code>
-        </p>
+        <h1 className={styles.title}>Welcome to everyone...</h1>
+        <br />
+        <div className="show-value">
+          <button title="Increment" onClick={IncrementValue}>
+            +
+          </button>{' '}
+          <span>{value}</span>{' '}
+          <button title="Decrement" onClick={DecrementValue}>
+            -
+          </button>
+        </div>
 
         <div className={styles.grid}>
-          <Link href="https://nextjs.org/docs">
-            <a className={styles.card}>
-              <h2>Documentation &rarr;</h2>
-              <p>Find in-depth information about Next.js features and API.</p>
-            </a>
-          </Link>
-
-          <Link href="https://nextjs.org/learn">
-            <a className={styles.card}>
-              <h2>Learn &rarr;</h2>
-              <p>Learn about Next.js in an interactive course with quizzes!</p>
-            </a>
-          </Link>
-
-          <Link href="https://github.com/vercel/next.js/tree/canary/examples">
-            <a className={styles.card}>
-              <h2>Examples &rarr;</h2>
-              <p>Discover and deploy boilerplate example Next.js projects.</p>
-            </a>
-          </Link>
-          <Link href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app">
-            <a className={styles.card}>
-              <h2>Deploy &rarr;</h2>
-              <p>
-                Instantly deploy your Next.js site to a public URL with Vercel.
-              </p>
-            </a>
-          </Link>
+          {dataSet.map((item) => (
+            <>
+              <Link
+                href={{
+                  pathname: `test`,
+                  query: { id: item.id },
+                }}
+                key={item.id}
+              >
+                <a className={styles.card}>
+                  <h2>{item.title} &rarr;</h2>
+                  <p>{item.detail}</p>
+                </a>
+              </Link>
+            </>
+          ))}
         </div>
       </main>
       <Footer />
