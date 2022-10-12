@@ -17,6 +17,8 @@ a {
 
 .show-value {
   display: inline;
+  margin-top: 50px;
+  margin-bottom: 50px;
 }
 
 .show-value button {
@@ -25,11 +27,42 @@ a {
   font-size: 31px;
   font-weight: 500;
   text-align: center;
+  border-radius: 5px;
+  background-color: #fff;
+  color: #008eff;
+  border: 2px solid #008eff;
+  transition: all 0.2s ease-out;
+}
+.show-value button:hover {
   background-color: #008eff;
   color: #fff;
   border: none;
-  border-radius: 5px;
+  box-shadow: 0 8px 10px rgba(0, 0, 0, 0.23);
+  transform: scale(1.02);
 }
+.child-text-align h2,
+.child-text-align h1 {
+  text-align: center;
+}
+
+.child-text-align button {
+  background-color: #fff;
+  padding: 10px 15px 10px;
+  border-radius: 5px;
+  color: #008eff;
+  font-weight: 600;
+  border: 2px solid #008eff;
+  transition: all 0.2s ease-out;
+}
+
+.child-text-align button:hover {
+  background-color: #008eff;
+  color: #fff;
+  border: 2px solid #008eff;
+  box-shadow: 0 8px 10px rgba(0, 0, 0, 0.23);
+  transform: scale(1.02);
+}
+
 .show-value span {
   font-size: 31px;
   font-weight: 500;

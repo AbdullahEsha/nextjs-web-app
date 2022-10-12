@@ -42,7 +42,9 @@
 .title {
   margin: 0;
   line-height: 1.15;
-  font-size: 4rem;
+  font-size: 25px;
+  max-width: 930px;
+  font-weight: 500;
 }
 
 .title,
@@ -83,6 +85,12 @@
   border-radius: 10px;
   transition: color 0.15s ease, border-color 0.15s ease;
   max-width: 300px;
+  transition: all 0.2s ease-out;
+}
+
+.card:hover {
+  box-shadow: 0 8px 10px rgba(0, 0, 0, 0.23);
+  transform: translateY(-10px);
 }
 
 .card:hover,

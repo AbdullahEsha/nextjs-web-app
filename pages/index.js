@@ -11,25 +11,27 @@ export default function Home() {
   const IncrementValue = () => {
     if (value < 20) {
       setValue(value + 1)
+    } else {
+      alert('Sorry, greater then 20!')
     }
   }
   const DecrementValue = () => {
     if (value > 0) {
       setValue(value - 1)
+    } else {
+      alert('Sorry, less then 0!')
     }
   }
-
-  // const router = useRouter()
-  // const { id } = router.query
-
-  // console.log(id)
 
   return (
     <div className={styles.container}>
       <MainNav />
       <main className={styles.main}>
-        <h1 className={styles.title}>Welcome to everyone...</h1>
-        <br />
+        <p className={styles.title}>
+          Yarn install and test, External and Module CSS test, Dynamic routing
+          test, Hooks test, Data API test, Deploy to Netlify with free domain
+          etc.
+        </p>
         <div className="show-value">
           <button title="Increment" onClick={IncrementValue}>
             +
@@ -45,7 +47,7 @@ export default function Home() {
             <>
               <Link
                 href={{
-                  pathname: `test`,
+                  pathname: `card/test`,
                   query: { id: item.id },
                 }}
                 key={item.id}
