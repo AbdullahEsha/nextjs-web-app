@@ -1,12 +1,11 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import styles from '../styles/Home.module.css'
 import MainNav from '../components/MainNav'
 import Footer from '../components/Footer'
-import { dataSet } from '../components/DataSet'
-import { useRouter } from 'next/router'
 
 export default function Home() {
+  const [dataSet, setDataSet] = useState([])
   const [value, setValue] = useState(0)
   const IncrementValue = () => {
     if (value < 20) {
@@ -22,6 +21,29 @@ export default function Home() {
       alert('Sorry, less then 0!')
     }
   }
+
+  const getDataSet = async () => {
+    fetch(`https://shahriar-nextjs.netlify.app/api/dataSet`, {})
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.error) {
+          console.log('vul')
+        } else {
+          console.log('data', data)
+          setDataSet(data.dataSet)
+        }
+      })
+      .catch((err) => {
+        console.log('pro erro', err)
+      })
+  }
+
+  useEffect(() => {
+    getDataSet()
+    return () => {
+      //console.log("removing...", e);
+    }
+  }, [])
 
   return (
     <div className={styles.container}>
